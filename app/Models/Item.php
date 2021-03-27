@@ -10,4 +10,18 @@ class Item extends Model
     const STATE_SELLING = 'selling';
     // 購入済み
     const STATE_BOUGHT = 'bought';
+
+    public function secondaryCategory()
+    {
+        return $this->belongsTo(SecondaryCategory::class);
+    }
+
+    /**
+     * isStateSellingアクセサ
+     * @return bool
+     */
+    public function getIsStateSellingAttribute()
+    {
+        return $this->state === self::STATE_SELLING;
+    }
 }
