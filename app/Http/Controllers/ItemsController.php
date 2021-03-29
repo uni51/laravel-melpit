@@ -57,4 +57,14 @@ class ItemsController extends Controller
             $value
         );
     }
+
+    public function showBuyItemForm(Item $item)
+    {
+        if (!$item->isStateSelling) {
+            abort(404);
+        }
+
+        return view('items.item_buy_form')
+            ->with('item', $item);
+    }
 }
